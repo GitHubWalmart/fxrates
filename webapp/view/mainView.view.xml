@@ -1,0 +1,87 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:t="sap.ui.table" xmlns="sap.m" controllerName="roots.FX_Rates.controller.mainView"
+	xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:form="sap.ui.layout.form" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<f:GridList id="idgridListPR4" headerText="PR4" items="{path : 'PR4>/CountSet', parameters:{expand : 'ExchangeRate'} }">
+							<f:GridListItem>
+								<!--	<GenericTile header="Exchange Rate Type : {PR4>RateType} " press="onPress">-->
+								<!--		<TileContent>-->
+								<!--			<VBox>-->
+								<!--				<HBox>-->
+								<!--					<Label text="Target:"></Label>-->
+								<!--					<Text text="{PR4>Target}"></Text>-->
+								<!--				</HBox>-->
+								<!--					<HBox>-->
+								<!--					<Label text="Received :"></Label>-->
+								<!--					<Text text="{PR4>Recieved}"></Text>-->
+								<!--				</HBox>-->
+								<!--					<HBox>-->
+								<!--					<Label text="Missing :"></Label>-->
+								<!--					<Text text="{PR4>Missing}"></Text>-->
+								<!--				</HBox>-->
+								<!--</VBox>-->
+								<!--		</TileContent>-->
+								<!--	</GenericTile>-->
+								<f:Card class="sapUiMediumMargin" width="350px">
+									<f:header>
+										<card:Header title="Exchange Rate Type {PR4>RateType} on {PR4>Date}"/>
+									</f:header>
+									<f:content>
+										<List itemPress="onPress">
+											<CustomListItem>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Title level="H3" text="Target"/>
+													</VBox>
+													<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{PR4>Target}"/>
+												</HBox>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Title level="H3" text="Received"/>
+													</VBox>
+													<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{PR4>Received}"/>
+												</HBox>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Title level="H3" text="Missing"/>
+													</VBox>
+													<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{PR4>Missing}"
+																state ="{=${PR4>Missing} === 0 ? 'Success' : 'Error'}"/>
+												</HBox>
+											</CustomListItem>
+										</List>
+									</f:content>
+								</f:Card>
+								<!--<Table items="{PR4>ExchangeRate}" growing="true" growingThreshold="5">-->
+								<!--	<columns>-->
+								<!--		<Column>-->
+								<!--			<Text text="From Currency"/>-->
+								<!--		</Column>-->
+								<!--		<Column>-->
+								<!--			<Text text="Ex.Ch Type"/>-->
+								<!--		</Column>-->
+								<!--		<Column>-->
+								<!--			<Text text="Date"/>-->
+								<!--		</Column>-->
+								<!--	</columns>-->
+								<!--	<items>-->
+								<!--		<ColumnListItem vAlign="Middle">-->
+								<!--			<cells>-->
+								<!--				<Text text="{PR4>Currency}"/>-->
+								<!--				<Text text="{PR4>RateType}"/>-->
+								<!--				<Text text="{PR4>Date}"/>-->
+								<!--			</cells>-->
+								<!--		</ColumnListItem>-->
+								<!--	</items>-->
+								<!--</Table>-->
+							</f:GridListItem>
+						</f:GridList>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

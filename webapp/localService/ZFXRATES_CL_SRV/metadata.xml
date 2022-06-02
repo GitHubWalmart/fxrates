@@ -1,0 +1,30 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFXRATES_CL_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="ExchangeRate" sap:content-version="1">
+				<Key><PropertyRef Name="Currency"/><PropertyRef Name="RateType"/></Key><Property Name="Currency" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RateType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Date" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Count" sap:content-version="1">
+				<Key><PropertyRef Name="RateType"/></Key><Property Name="RateType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Counter" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ExchangeRate" Relationship="ZFXRATES_CL_SRV.CountToExchangeRate" FromRole="FromRole_CountToExchangeRate"
+					ToRole="ToRole_CountToExchangeRate"/></EntityType>
+			<Association Name="CountToExchangeRate" sap:content-version="1"><End Type="ZFXRATES_CL_SRV.Count" Multiplicity="1" Role="FromRole_CountToExchangeRate"/><End Type="ZFXRATES_CL_SRV.ExchangeRate" Multiplicity="*" Role="ToRole_CountToExchangeRate"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_CountToExchangeRate"><PropertyRef Name="RateType"/></Principal>
+					<Dependent Role="ToRole_CountToExchangeRate"><PropertyRef Name="RateType"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZFXRATES_CL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ExchangeRateSet" EntityType="ZFXRATES_CL_SRV.ExchangeRate" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CountSet" EntityType="ZFXRATES_CL_SRV.Count" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="CountToExchangeRateSet" Association="ZFXRATES_CL_SRV.CountToExchangeRate" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CountSet" Role="FromRole_CountToExchangeRate"/><End EntitySet="ExchangeRateSet" Role="ToRole_CountToExchangeRate"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://sapdgga00.wal-mart.com:8073/sap/opu/odata/sap/ZFXRATES_CL_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://sapdgga00.wal-mart.com:8073/sap/opu/odata/sap/ZFXRATES_CL_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
